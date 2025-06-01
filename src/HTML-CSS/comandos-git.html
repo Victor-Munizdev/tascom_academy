@@ -34,6 +34,7 @@
       padding: 10px;
       overflow-x: auto;
       border-radius: 4px;
+      white-space: pre-wrap; /* evita quebra horizontal */
     }
     nav {
       background: #444;
@@ -57,6 +58,12 @@
       width: 300px;
       border-radius: 4px;
       border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    mark {
+      background-color: yellow;
+      color: black;
+      padding: 0;
     }
     .hidden {
       display: none;
@@ -99,8 +106,7 @@
     <input type="text" id="search" placeholder="🔍 Buscar comando...">
   </div>
 
-  <!-- Seções anteriores já existentes aqui -->
-
+  <!-- Exemplo de seções para teste -->
   <section id="reset">
     <h2><i class="fas fa-undo"></i> Reset e Checkout</h2>
     <pre>git checkout arquivo.txt
@@ -153,30 +159,30 @@ git commit -S -m "Mensagem"</pre>
   const sections = document.querySelectorAll("section");
 
   function removeHighlights(element) {
-    const markTags = element.querySelectorAll("mark");
-    markTags.forEach(mark => {
-      const text = document.createTextNode(mark.textContent);
-      mark.replaceWith(text);
+    element.querySelectorAll("mark").forEach(mark => {
+      const textNode = document.createTextNode(mark.textContent);
+      mark.replaceWith(textNode);
     });
   }
 
   function highlightText(element, query) {
     if (!query) return;
+
     const regex = new RegExp(`(${query})`, "gi");
 
-    ["p", "pre"].forEach(tag => {
-      element.querySelectorAll(tag).forEach(el => {
-        removeHighlights(el); // remove marcações anteriores
-        el.innerHTML = el.textContent.replace(regex, "<mark>$1</mark>");
-      });
+    // Destaca só em parágrafos para evitar problemas no <pre>
+    element.querySelectorAll("p").forEach(el => {
+      removeHighlights(el);
+      el.innerHTML = el.textContent.replace(regex, "<mark>$1</mark>");
     });
   }
 
   search.addEventListener("input", () => {
-    const query = search.value.toLowerCase();
+    const query = search.value.toLowerCase().trim();
 
     sections.forEach(section => {
       const text = section.textContent.toLowerCase();
+
       if (text.includes(query)) {
         section.style.display = "block";
         highlightText(section, query);
@@ -184,6 +190,12 @@ git commit -S -m "Mensagem"</pre>
         section.style.display = "none";
       }
     });
+
+    if (!query) {
+      sections.forEach(section => {
+        section.querySelectorAll("p").forEach(removeHighlights);
+      });
+    }
   });
 </script>
 
