@@ -2,9 +2,9 @@ Plataforma de Portfólios
 
 Sobre o Projeto
 
-Este projeto é uma aplicação feita com React e TypeScript para criar e gerenciar portfólios pessoais ou profissionais.
+Este projeto é uma aplicação feita com React e TypeScript para criar e gerenciar portfólios pessoais ou profissionais!
 
-Os dados ficam salvos no navegador usando o localStorage, assim não precisa de banco de dados ou servidor.
+Os dados ficam salvos no navegador usando o localStorage, assim não precisa de banco de dados ou servidor (Se não tiver usuários que possam ver os portfólios dos outros).
 
 A navegação é feita com React Router, deixando o site rápido e sem recarregar as páginas.
 
@@ -18,39 +18,7 @@ Visualizar Detalhes: Página com todas as informações do portfólio.
 
 Excluir Portfólio: Permite apagar um portfólio com confirmação para evitar erros.
 
-Persistência: Os portfólios ficam salvos no navegador entre sessões.
-
-Como o Projeto está Organizado
-
-App.tsx: Define as rotas e exibe o menu de navegação.
-
-pages/HomePage.tsx: Lista portfólios, faz busca e permite excluir.
-
-pages/PortfolioForm.tsx: Formulário para criar portfólio.
-
-pages/PortfolioDetails.tsx: Mostra detalhes do portfólio e permite excluir.
-
-components/HomeHeader.tsx: Cabeçalho da página inicial.
-
-components/SearchBar.tsx: Campo de busca.
-
-components/PortfolioCard.tsx: Cartão com resumo do portfólio.
-
-styles/global.css: Estilos do projeto.
-
-Tecnologias Usadas
-
-React 18
-
-TypeScript
-
-React Router DOM v6
-
-Vite (ferramenta de build e desenvolvimento)
-
-LocalStorage (para salvar dados no navegador)
-
-CSS para estilização simples e responsiva
+Persistência: Os portfólios ficam salvos no localStorage.
 
 Como Usar
 
