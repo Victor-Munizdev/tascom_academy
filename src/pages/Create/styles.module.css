@@ -1,0 +1,15 @@
+.backButton {
+  background-color: var(--secondary-10);
+  border: 2px solid;
+  padding: 12px;
+  text-align: center;
+  outline: none;
+  border-radius: 8px;
+  color: var(--secondary-1);
+  width: 100%;
+  transition: background-color 0.3s ease-in;
+}
+
+.backButton:hover {
+  background-color: aqua;
+}

@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  h1 {
+    font-size: 48px;
+    color: var(--secondary-13);
+    span {
+      color: purple;
+      font-size: 48px;
+    }
+  }
+}
